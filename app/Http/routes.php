@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('socket', 'socketController@index');
+Route::post('sendmessage', [
+		'as' => 'send', 'uses' => 'socketController@sendMessage'
+	]);
+Route::get('writemessage', 'socketController@writemessage');
