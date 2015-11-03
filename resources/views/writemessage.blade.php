@@ -8,6 +8,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Send message</div>
                     <form action="{{ route('send') }}" method="POST">
+                        <input type="text" name="nama"/> <br>
                         <textarea name="message"></textarea> <br>
                         <input type="submit" value="send">
                     </form>

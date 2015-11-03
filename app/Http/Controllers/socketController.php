@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use LRedis;
 use Input;
+use App\Chat;
 class socketController extends Controller
 {
     public function index()
@@ -21,8 +22,10 @@ class socketController extends Controller
     public function sendMessage(Request $request){
 
         $redis = LRedis::connection();
-        
+        $input['chat'] = $request->input('message');
+        Chat::create($input);
         $redis->publish('message', $request->input('message'));
+        
         return redirect('writemessage');
     }
 }

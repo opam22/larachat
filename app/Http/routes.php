@@ -19,3 +19,12 @@ Route::post('sendmessage', [
 		'as' => 'send', 'uses' => 'socketController@sendMessage'
 	]);
 Route::get('writemessage', 'socketController@writemessage');
+Route::post('login', [
+		'as' => 'login', 'uses' => 'UserController@login'
+	]);
+Route::post('register', [
+		'as' => 'register', 'uses' => 'UserController@register'
+	]);
+Route::post('logout', [
+		'as' => 'logout', 'uses' => 'UserController@logout'
+	]);
