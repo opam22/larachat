@@ -23,6 +23,6 @@ class socketController extends Controller
         $redis = LRedis::connection();
         
         $redis->publish('message', $request->input('message'));
-        return redirect('socket');
+        return redirect('writemessage');
     }
 }
