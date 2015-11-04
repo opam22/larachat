@@ -24,8 +24,11 @@ class socketController extends Controller
 
         $redis = LRedis::connection();
         $input['chat'] = $request->input('message');
+        $input['user_id'] = Auth::user()->id;
         Chat::create($input);
+        $redis->publish('message', Auth::user()->name);
         $redis->publish('message', $request->input('message'));
+        
         
         return redirect('writemessage');
     }
