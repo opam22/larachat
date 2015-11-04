@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use LRedis;
 use Input;
 use App\Chat;
+use Auth;
 class socketController extends Controller
 {
     public function index()

@@ -11,20 +11,23 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('socket', 'socketController@index');
+Route::get('/', [
+ 'as' => 'index', 'uses' => 'HomeController@index'
+ ]);
+Route::post('/login', [
+ 'as' => 'login', 'uses' => 'LoginController@login'
+ ]);
+Route::get('logout', [
+ 'as' => 'logout', 'uses' => 'LoginController@logout'
+ ]);
+Route::get('socket', [
+ 'as' => 'socket', 'uses' => 'socketController@index'
+ ]);
 Route::post('sendmessage', [
 		'as' => 'send', 'uses' => 'socketController@sendMessage'
 	]);
 Route::get('writemessage', 'socketController@writemessage');
-Route::post('login', [
-		'as' => 'login', 'uses' => 'UserController@login'
-	]);
+
 Route::post('register', [
 		'as' => 'register', 'uses' => 'UserController@register'
-	]);
-Route::post('logout', [
-		'as' => 'logout', 'uses' => 'UserController@logout'
 	]);
